@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.observe
+import androidx.lifecycle.lifecycleScope
+
 import androidx.navigation.fragment.findNavController
 import com.example.apppro.R
 import com.example.apppro.databinding.FragmentFirstBinding
 import com.example.apppro.viewmodel.ViewModelAPP
+import kotlinx.coroutines.launch
 import kotlin.math.log
 
 /**
@@ -40,16 +42,6 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
-
-        mViewModelAPP.getFeed()
-
-
-        mViewModelAPP.allFeedData.observe(viewLifecycleOwner,{
-            it.let {
-                Log.d("veamos", "${it}")
-            }
-        })
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }

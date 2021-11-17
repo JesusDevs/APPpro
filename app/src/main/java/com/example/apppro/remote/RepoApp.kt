@@ -6,7 +6,7 @@ import com.example.apppro.pojo.FeedResponseItem
 
 class RepoApp {
 
-
+/*
     private val retrofit = RetrofitClient.retrofitInstance()
 
     //variable live data observador del repo, ante un cambio nos actualiza la vista
@@ -22,6 +22,6 @@ class RepoApp {
         }
         service.onFailure {
             Log.d("ERROR", "$it")
-        }}
+        }}*/
 
 }

@@ -1,9 +1,12 @@
 package com.example.apppro.pojo
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-
+@Entity(tableName = "feed_table" )
 data class FeedResponseItem(
+    @PrimaryKey
     @SerializedName("author_id")
     val authorId: String,
     @SerializedName("date")
