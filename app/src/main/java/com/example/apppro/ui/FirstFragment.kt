@@ -53,7 +53,6 @@ class FirstFragment : Fragment() {
 
             //consulta a api corutina
             mViewModelAPP.getFeed()
-
           mViewModelAPP.allFeedData.observe(viewLifecycleOwner,{
               adapter.update(it)
             })
@@ -69,9 +68,7 @@ adapter.selectedItem().observe(viewLifecycleOwner,{
         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,bundle)
     }
 })
-        /*binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }*/
+
     }
 
     override fun onDestroyView() {
