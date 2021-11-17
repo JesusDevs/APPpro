@@ -29,11 +29,11 @@ class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedWH>(){
         }
 
         fun bind (feedItem: FeedResponseItem){
-            binding.titles.text = feedItem.title
+            binding.titles.text= feedItem.title.uppercase()
             binding.imageView.loadSvg(feedItem.image)
             binding.dates.text = feedItem.date
-            binding.author.text= feedItem.authorId
-            binding.id.text=feedItem.link
+
+
             itemView.setOnClickListener(this)
         }
 

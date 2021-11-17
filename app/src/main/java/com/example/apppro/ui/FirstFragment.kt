@@ -59,7 +59,16 @@ class FirstFragment : Fragment() {
             })
 
 
-
+adapter.selectedItem().observe(viewLifecycleOwner,{
+    it?.let {
+        val bundle = Bundle()
+            bundle.putString("idAuthor",it.authorId)
+            bundle.putString("title",it.title)
+            bundle.putString("img",it.image)
+            bundle.putString("description",it.description)
+        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,bundle)
+    }
+})
         /*binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }*/
