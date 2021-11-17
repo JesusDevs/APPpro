@@ -7,11 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.apppro.R
+import com.example.apppro.adapter.FeedAdapter
 import com.example.apppro.databinding.FragmentFirstBinding
+import com.example.apppro.pojo.FeedResponseItem
 import com.example.apppro.viewmodel.ViewModelAPP
 import kotlinx.coroutines.launch
 import kotlin.math.log
@@ -20,35 +24,49 @@ import kotlin.math.log
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
-
+    private lateinit var binding: FragmentFirstBinding
     private val mViewModelAPP : ViewModelAPP by activityViewModels()
-    private var _binding: FragmentFirstBinding? = null
+
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
+    //private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // declarar e instnaciar adapter , recycler
+        val adapter = FeedAdapter()
+        val liveDataFeed :List<FeedResponseItem>
+        binding.rvView.adapter = adapter
+        binding.rvView.layoutManager = LinearLayoutManager(context)
+
+            //consulta a api corutina
+            mViewModelAPP.getFeed()
+
+          mViewModelAPP.allFeedData.observe(viewLifecycleOwner,{
+              adapter.update(it)
+            })
 
 
-        binding.buttonFirst.setOnClickListener {
+
+        /*binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+        }*/
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding
     }
 }

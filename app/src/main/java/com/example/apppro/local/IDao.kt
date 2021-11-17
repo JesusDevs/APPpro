@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.apppro.pojo.ContactsReponseItem
 import com.example.apppro.pojo.FeedResponseItem
 @Dao
 interface IDao {
@@ -14,6 +15,8 @@ interface IDao {
     @Query("SELECT * FROM feed_table order by authorId ")
     fun getAllFeedDataBase(): LiveData<List<FeedResponseItem>>
 
+    @Query("SELECT * FROM contacts_table")
+    fun getAllFeeCoDataBases(): LiveData<List<ContactsReponseItem>>
    /* @Query("SELECT * FROM feed_table WHERE authorId = authorId")
    fun getFeedByAutorID(autorId: String): LiveData<FeedResponseItem>
 */

@@ -74,5 +74,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
     //livedata
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
-    implementation"androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+    implementation"androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
+    //cardview
+    implementation "androidx.cardview:cardview:1.0.0"
+    //Coil dependencies imagenes svg,jpg,full,delay,efectos
+    implementation("io.coil-kt:coil:1.2.1")
+    implementation("io.coil-kt:coil-svg:1.2.1")
 }

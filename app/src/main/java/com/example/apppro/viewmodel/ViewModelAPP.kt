@@ -4,25 +4,22 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.apppro.local.DatabaseApp
 import com.example.apppro.pojo.FeedResponseItem
+import com.example.apppro.remote.RepoApp
 
-import com.example.apppro.remote.RepoAppLive
 import kotlinx.coroutines.launch
 
 class ViewModelAPP(application: Application): AndroidViewModel(application) {
 
-    private val repository : RepoAppLive
+    private val repository : RepoApp
     val allFeedData : LiveData<List<FeedResponseItem>>
 
     init {
-     val dao = DatabaseApp.getDataBase(application).getDao()
-        repository= RepoAppLive(dao)
-       viewModelScope.launch {
-           repository.getdataWithCoroutines()
-       }
-        allFeedData = repository.liveDataBaseAPP
+
+        repository= RepoApp()
+        allFeedData = repository.liveDataFeed
     }
 
-    fun getFeed() : LiveData<List<FeedResponseItem>> {
-        return repository.liveDataBaseAPP
+    fun getFeed()= viewModelScope.launch {
+        repository.getFeedFromInternetRepo()
     }
 }
