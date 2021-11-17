@@ -1,0 +1,6 @@
+[{
+    "id": "all",
+    "routesVariants": ["get-contacts:success", "get-contact:success", "login:success", "get-feed:success", "get-post:success", "favorites:success"]
+  }
+
+]
