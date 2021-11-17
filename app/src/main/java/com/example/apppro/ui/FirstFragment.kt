@@ -47,16 +47,20 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // declarar e instnaciar adapter , recycler
         val adapter = FeedAdapter()
-        val liveDataFeed :List<FeedResponseItem>
+
         binding.rvView.adapter = adapter
         binding.rvView.layoutManager = LinearLayoutManager(context)
 
             //consulta a api corutina
-            mViewModelAPP.getFeed()
+            //mViewModelAPP.getFeed()
 
           mViewModelAPP.allFeedData.observe(viewLifecycleOwner,{
               adapter.update(it)
             })
+
+        adapter.selectedItem().observe(viewLifecycleOwner,{
+            val bundle = Bundle()
+        })
 
 
 

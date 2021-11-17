@@ -12,11 +12,13 @@ interface IDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllFeed(list: List<FeedResponseItem>)
 
-    @Query("SELECT * FROM feed_table order by authorId ")
-    fun getAllFeedDataBase(): LiveData<List<FeedResponseItem>>
+    @Query("SELECT * FROM feed_table ")
+   fun getAllFeedDataBase(): LiveData<List<FeedResponseItem>>
 
     @Query("SELECT * FROM contacts_table")
     fun getAllFeeCoDataBases(): LiveData<List<ContactsReponseItem>>
+
+
    /* @Query("SELECT * FROM feed_table WHERE authorId = authorId")
    fun getFeedByAutorID(autorId: String): LiveData<FeedResponseItem>
 */
