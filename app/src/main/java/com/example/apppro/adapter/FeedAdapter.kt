@@ -6,15 +6,22 @@ import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.apppro.databinding.FeedItemBinding
+import com.example.apppro.pojo.ContactsReponseItem
 import com.example.apppro.pojo.FeedResponseItem
 import com.jesusdev.gamesfreepc.extensions.loadSvg
 
 class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedWH>(){
 
     private var listFeeditem = listOf<FeedResponseItem>()
+
+    private var listContactItem = listOf<ContactsReponseItem>()
     private var selectedItem = MutableLiveData<FeedResponseItem>()
 
     fun selectedItem()=selectedItem
+    fun updateContact(listC:List<ContactsReponseItem>){
+        listContactItem=listC
+        notifyDataSetChanged()
+    }
     fun update(list: List<FeedResponseItem>){
 
         listFeeditem=list
@@ -32,6 +39,7 @@ class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedWH>(){
             binding.titles.text= feedItem.title.uppercase()
             binding.imageView.loadSvg(feedItem.image)
             binding.dates.text = feedItem.date
+
 
 
             itemView.setOnClickListener(this)

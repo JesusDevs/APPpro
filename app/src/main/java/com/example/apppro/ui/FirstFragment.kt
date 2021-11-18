@@ -47,14 +47,21 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // declarar e instnaciar adapter , recycler
         val adapter = FeedAdapter()
-        val liveDataFeed :List<FeedResponseItem>
+
         binding.rvView.adapter = adapter
         binding.rvView.layoutManager = LinearLayoutManager(context)
 
             //consulta a api corutina
+        mViewModelAPP.getContacts()
+        mViewModelAPP.all.observe(viewLifecycleOwner,{
+            Log.d("datosenvista","$it")
+
+
+        })
             mViewModelAPP.getFeed()
-          mViewModelAPP.allFeedData.observe(viewLifecycleOwner,{
+            mViewModelAPP.allFeedData.observe(viewLifecycleOwner,{
               adapter.update(it)
+
             })
 
 
@@ -65,7 +72,12 @@ adapter.selectedItem().observe(viewLifecycleOwner,{
             bundle.putString("title",it.title)
             bundle.putString("img",it.image)
             bundle.putString("description",it.description)
+
         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,bundle)
+
+        //consulta a api corutina
+
+
     }
 })
 
