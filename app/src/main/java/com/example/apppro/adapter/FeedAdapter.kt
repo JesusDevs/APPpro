@@ -1,31 +1,34 @@
 package com.example.apppro.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.apppro.databinding.FeedItemBinding
 import com.example.apppro.pojo.ContactsReponseItem
 import com.example.apppro.pojo.FeedResponseItem
+import com.example.apppro.viewmodel.ViewModelAPP
 import com.jesusdev.gamesfreepc.extensions.loadSvg
 
 class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedWH>(){
 
     private var listFeeditem = listOf<FeedResponseItem>()
-
     private var listContactItem = listOf<ContactsReponseItem>()
+
+
     private var selectedItem = MutableLiveData<FeedResponseItem>()
 
     fun selectedItem()=selectedItem
-    fun updateContact(listC:List<ContactsReponseItem>){
-        listContactItem=listC
-        notifyDataSetChanged()
-    }
+
     fun update(list: List<FeedResponseItem>){
 
         listFeeditem=list
         notifyDataSetChanged()
+
+
     }
 
 
@@ -44,6 +47,7 @@ class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedWH>(){
 
             itemView.setOnClickListener(this)
         }
+
 
     }
 

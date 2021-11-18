@@ -47,7 +47,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // declarar e instnaciar adapter , recycler
         val adapter = FeedAdapter()
-
+        var idAuthor : String
         binding.rvView.adapter = adapter
         binding.rvView.layoutManager = LinearLayoutManager(context)
 
@@ -57,13 +57,13 @@ class FirstFragment : Fragment() {
             Log.d("datosenvista","$it")
 
 
+
         })
             mViewModelAPP.getFeed()
             mViewModelAPP.allFeedData.observe(viewLifecycleOwner,{
               adapter.update(it)
 
             })
-
 
 adapter.selectedItem().observe(viewLifecycleOwner,{
     it?.let {
