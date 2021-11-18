@@ -1,17 +1,19 @@
 package com.example.apppro.ui.SplashScreenAnima
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import androidx.appcompat.app.AppCompatActivity
 import com.example.apppro.R
+import com.example.apppro.base.BaseActivity
 import com.example.apppro.databinding.ActivitySplashBinding
-import com.example.apppro.ui.MainActivity
-import com.example.apppro.ui.login.LoginActivity
+import com.example.apppro.ui.login.LoginFullActivity
 
 
+@SuppressLint("CustomSplashScreen")
 @Suppress("DEPRECATION")
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
+
     private lateinit var binding: ActivitySplashBinding
     private var mDelayHandler: Handler? = null
     private val SPLASH_DELAY: Long = 2000 //2 seconds
@@ -19,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
     internal val mRunnable: Runnable = Runnable {
         if (!isFinishing) {
 
-            val intent = Intent(applicationContext, LoginActivity::class.java)
+            val intent = Intent(applicationContext,LoginFullActivity::class.java)
             startActivity(intent)
             finish()
         }

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout-v28/feed_item_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout/activity_fullscreen.xml" value="0.1716485507246377" />
         <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout/activity_main.xml" value="0.15678824721377912" />
         <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout/activity_splash.xml" value="0.16259057971014493" />
         <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout/content_main.xml" value="0.33" />
@@ -11,7 +12,9 @@
         <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout/feed_item_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout/fragment_first.xml" value="0.15678824721377912" />
         <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout/fragment_second.xml" value="0.23385416666666667" />
-        <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout/login.xml" value="0.125" />
+        <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout/fragment_second2.xml" value="0.17798913043478262" />
+        <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout/login.xml" value="0.1" />
+        <entry key="..\:/Users/leonr/AndroidStudioProjects/APPpro/app/src/main/res/layout/login_acti.xml" value="0.1" />
       </map>
     </option>
   </component>
