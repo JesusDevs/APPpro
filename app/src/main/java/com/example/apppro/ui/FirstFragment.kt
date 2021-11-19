@@ -7,18 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.lifecycleScope
+
 
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.apppro.R
 import com.example.apppro.adapter.FeedAdapter
 import com.example.apppro.databinding.FragmentFirstBinding
-import com.example.apppro.pojo.FeedResponseItem
+
 import com.example.apppro.viewmodel.ViewModelAPP
-import kotlinx.coroutines.launch
-import kotlin.math.log
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -55,6 +53,8 @@ class FirstFragment : Fragment() {
         //seleccion de item para actualizar adpater
         adapter.selectedItem().observe(viewLifecycleOwner, {
             it?.let {
+
+                //pasando data
                 val bundle = Bundle()
                 bundle.putString("idAuthor", it.authorId)
                 bundle.putString("title", it.title)

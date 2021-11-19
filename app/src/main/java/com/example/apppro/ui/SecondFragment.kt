@@ -1,11 +1,13 @@
 package com.example.apppro.ui
 
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.text.htmlEncode
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -63,13 +65,13 @@ class SecondFragment : Fragment() {
         var list = arrayListOf<ContactsReponseItem>()
 
 
-        mViewModelAPP.getContacts()
+
         //pasando datos al detail desde bundle
         binding.titleEd.text = title
         binding.imageView2.loadSvg(img)
-        binding.description.text = description
+        binding.description.text =  Html.fromHtml(description)
         binding.dates.text = dates2
-
+        mViewModelAPP.getContacts()
         mViewModelAPP.allContact.observe(viewLifecycleOwner, {
             Log.d("datosenvista", "$it")
 
@@ -78,12 +80,15 @@ class SecondFragment : Fragment() {
 
 
 
-
+binding.guardarFav.setOnClickListener{
+    Toast.makeText(context,"Guardado Como Favorito", Toast.LENGTH_SHORT).show()
+}
 
         binding.volver.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

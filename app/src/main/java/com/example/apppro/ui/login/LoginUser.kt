@@ -5,7 +5,7 @@ interface LoginUser {
     //metodos mensajes de login
     interface ViewLogin{
         fun showError(msgError:String)
-        fun ShowProgressDialog()
+        fun showProgressDialog()
         fun hideProgressDialog()
         fun signIn()
     }

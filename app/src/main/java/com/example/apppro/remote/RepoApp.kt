@@ -11,8 +11,7 @@ class RepoApp {
 
 
     private val retrofit = RetrofitClient.retrofitInstance()
-    private val retrofit2 = RetrofitClient.retrofitInstance()
-    private val retrofit3 = RetrofitClient.retrofitInstance()
+
     //variable live data observador del repo, ante un cambio nos actualiza la vista
      val liveDataFeed = MutableLiveData<List<FeedResponseItem>>()
      var liveDataContact = MutableLiveData<List<ContactsReponseItem>>()
@@ -31,7 +30,7 @@ class RepoApp {
         }}
 
     suspend fun getContactFromInternetRepo(){
-        val serviceContact = kotlin.runCatching { retrofit2.getContact()}
+        val serviceContact = kotlin.runCatching { retrofit.getContact()}
         serviceContact.onSuccess {
             liveDataContact.value = it.body( )
             Log.e("contacts","${it.body()}")
@@ -43,7 +42,7 @@ class RepoApp {
         }
 
     fun logIn (username : String ,password :String){
-        val serviceContact2 = kotlin.runCatching { retrofit3.LogInUser(username, password)}
+        val serviceContact2 = kotlin.runCatching { retrofit.LogInUser(username, password)}
         serviceContact2.onSuccess {
             liveDataLoginResponse.value= it.body()
             Log.e("status log","${it.body()}")
