@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.htmlEncode
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -30,6 +31,8 @@ class SecondFragment : Fragment() {
     var idAuthor: String = ""
     var img: String = ""
     var title: String = ""
+    var description =""
+    var dates2 : String =""
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -41,6 +44,8 @@ class SecondFragment : Fragment() {
             title= it.getString("title","")
             img=it.getString("img","")
             idAuthor=it.getString("idAuthor","")
+            description = it.getString("description","")
+            dates2 = it.getString("dates1","")
         }
     }
     override fun onCreateView(
@@ -55,33 +60,31 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var list= arrayListOf<ContactsReponseItem>()
+        var list = arrayListOf<ContactsReponseItem>()
 
 
         mViewModelAPP.getContacts()
         //pasando datos al detail desde bundle
-        //binding.titleEd.text = title
+        binding.titleEd.text = title
         binding.imageView2.loadSvg(img)
+        binding.description.text = description
+        binding.dates.text = dates2
 
-            mViewModelAPP.allContact.observe(viewLifecycleOwner,{
-                Log.d("datosenvista","$it")
+        mViewModelAPP.allContact.observe(viewLifecycleOwner, {
+            Log.d("datosenvista", "$it")
 
-            })
-
-
+        })
 
 
-      /*  mViewModelAPP.all.observe(viewLifecycleOwner,{
-            Log.d("dates","$it")
 
-                adapter.updateContact(it)
 
-        })*/
-        /*    binding.buttonSecond.setOnClickListener {
+
+
+        binding.volver.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
-    */
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

@@ -25,13 +25,8 @@ import kotlin.math.log
  */
 class FirstFragment : Fragment() {
     private lateinit var binding: FragmentFirstBinding
-    private val mViewModelAPP : ViewModelAPP by activityViewModels()
+    private val mViewModelAPP: ViewModelAPP by activityViewModels()
 
-
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    //private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,33 +42,31 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // declarar e instnaciar adapter , recycler
         val adapter = FeedAdapter()
-        var idAuthor : String
         binding.rvView.adapter = adapter
         binding.rvView.layoutManager = LinearLayoutManager(context)
 
-            //consulta a api corutina
-
-            mViewModelAPP.getFeed()
-            mViewModelAPP.allFeedData.observe(viewLifecycleOwner,{
-              adapter.update(it)
-
-            })
-
-adapter.selectedItem().observe(viewLifecycleOwner,{
-    it?.let {
-        val bundle = Bundle()
-            bundle.putString("idAuthor",it.authorId)
-            bundle.putString("title",it.title)
-            bundle.putString("img",it.image)
-            bundle.putString("description",it.description)
-
-        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,bundle)
-
         //consulta a api corutina
 
+        mViewModelAPP.getFeed()
+        mViewModelAPP.allFeedData.observe(viewLifecycleOwner, {
+            adapter.update(it)
 
-    }
-})
+        })
+        //seleccion de item para actualizar adpater
+        adapter.selectedItem().observe(viewLifecycleOwner, {
+            it?.let {
+                val bundle = Bundle()
+                bundle.putString("idAuthor", it.authorId)
+                bundle.putString("title", it.title)
+                bundle.putString("img", it.image)
+                bundle.putString("description", it.description)
+                bundle.putString("dates1", it.date)
+
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
+
+
+            }
+        })
 
     }
 

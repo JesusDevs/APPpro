@@ -7,7 +7,8 @@
     android:layout_height="wrap_content"
     android:layout_marginRight="15dp"
     android:animateLayoutChanges="true"
-    android:outlineAmbientShadowColor="#22F4C3"
+
+
     android:outlineSpotShadowColor="#030322"
 
     android:padding="2dp"
@@ -20,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        android:background="@color/teal_700"
+    android:background="@drawable/gradientcolor"
         android:orientation="vertical">
 
 
@@ -33,7 +34,7 @@
             android:text="@string/app_name"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#FFEA00"
+            android:textColor="#F6F6F5"
 
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -58,9 +59,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Fecha De Publicación"
                     android:gravity="center"
-                    android:textColor="#00EA09"/>
+                    android:text="Fecha De Publicación"
+                    android:textColor="#00BCD4" />
+
                 <TextView
                     android:id="@+id/dates"
                     android:layout_width="match_parent"
@@ -71,7 +73,7 @@
                     android:paddingRight="5dp"
                     android:text="TextView"
                     android:textAlignment="center"
-                    android:textColor="#88DA29"
+                    android:textColor="#00BCD4"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
