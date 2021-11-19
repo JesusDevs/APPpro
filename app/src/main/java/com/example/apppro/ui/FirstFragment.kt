@@ -52,13 +52,7 @@ class FirstFragment : Fragment() {
         binding.rvView.layoutManager = LinearLayoutManager(context)
 
             //consulta a api corutina
-        mViewModelAPP.getContacts()
-        mViewModelAPP.all.observe(viewLifecycleOwner,{
-            Log.d("datosenvista","$it")
 
-
-
-        })
             mViewModelAPP.getFeed()
             mViewModelAPP.allFeedData.observe(viewLifecycleOwner,{
               adapter.update(it)

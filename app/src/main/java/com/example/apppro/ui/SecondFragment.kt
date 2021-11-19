@@ -7,12 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.apppro.R
 import com.example.apppro.adapter.FeedAdapter
 import com.example.apppro.databinding.FragmentSecondBinding
+import com.example.apppro.pojo.ContactsReponseItem
+import com.example.apppro.pojo.FeedResponseItem
 import com.example.apppro.viewmodel.ViewModelAPP
 import com.jesusdev.gamesfreepc.extensions.loadSvg
+import kotlinx.coroutines.job
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -21,6 +25,7 @@ class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
     private val mViewModelAPP: ViewModelAPP by activityViewModels()
+    private var listContactItem = listOf<ContactsReponseItem>()
     val adapter = FeedAdapter()
     var idAuthor: String = ""
     var img: String = ""
@@ -50,11 +55,20 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //mViewModelAPP.getContacts()
+        var list= arrayListOf<ContactsReponseItem>()
 
+
+        mViewModelAPP.getContacts()
         //pasando datos al detail desde bundle
-        binding.titleEd.text = title
+        //binding.titleEd.text = title
         binding.imageView2.loadSvg(img)
+
+            mViewModelAPP.allContact.observe(viewLifecycleOwner,{
+                Log.d("datosenvista","$it")
+
+            })
+
+
 
 
       /*  mViewModelAPP.all.observe(viewLifecycleOwner,{
@@ -72,4 +86,12 @@ class SecondFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    fun bindContact (contactem: ContactsReponseItem, id :String ){
+        binding.titleEd.text = contactem.firstName
+
+
+
+    }
+
 }

@@ -13,18 +13,20 @@ class ViewModelAPP(application: Application): AndroidViewModel(application) {
 
     private val repository : RepoApp = RepoApp()
     val allFeedData : LiveData<List<FeedResponseItem>>
-    val all : LiveData<List<ContactsReponseItem>>
+    val allContact : LiveData<List<ContactsReponseItem>>
+
 
     init {
 
         allFeedData = repository.liveDataFeed
-        all = repository.liveDataContact
+        allContact = repository.liveDataContact
     }
 
     fun getFeed()= viewModelScope.launch {
         repository.getFeedFromInternetRepo()
     }
-    fun getContacts()= viewModelScope.launch {
+    fun getContacts(){ viewModelScope.launch {
         repository.getContactFromInternetRepo()
-    }
+    }}
+
 }
