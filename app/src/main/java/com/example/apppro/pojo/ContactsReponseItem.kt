@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 data class ContactsReponseItem(
 
     @SerializedName("firstName")
-    val firstName: String,
+    var firstName: String,
     @SerializedName("gender")
     val gender: String,
     @PrimaryKey

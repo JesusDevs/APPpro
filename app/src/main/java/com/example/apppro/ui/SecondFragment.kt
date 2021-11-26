@@ -33,23 +33,26 @@ class SecondFragment : Fragment() {
     var idAuthor: String = ""
     var img: String = ""
     var title: String = ""
-    var description =""
-    var dates2 : String =""
+    var description = ""
+    var dates2: String = ""
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
     //agregar Metodo Oncreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            title= it.getString("title","")
-            img=it.getString("img","")
-            idAuthor=it.getString("idAuthor","")
-            description = it.getString("description","")
-            dates2 = it.getString("dates1","")
+            title = it.getString("title", "")
+            img = it.getString("img", "")
+            idAuthor = it.getString("idAuthor", "")
+            description = it.getString("description", "")
+            dates2 = it.getString("dates1", "")
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,27 +65,27 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var list = arrayListOf<ContactsReponseItem>()
 
-
-
-        //pasando datos al detail desde bundle
-        binding.titleEd.text = title
-        binding.imageView2.loadSvg(img)
-        binding.description.text =  Html.fromHtml(description)
-        binding.dates.text = dates2
-        mViewModelAPP.getContacts()
+        listOf(mViewModelAPP.getContacts())
         mViewModelAPP.allContact.observe(viewLifecycleOwner, {
             Log.d("datosenvista", "$it")
-
+            bindContact(it)
         })
 
 
+        //pasando datos al detail desde bundle first fragment
+        binding.titleEd.text = title
+        binding.imageView2.loadSvg(img)
+        binding.description.text = Html.fromHtml(description)
+        binding.dates.text = dates2
 
 
-binding.guardarFav.setOnClickListener{
-    Toast.makeText(context,"Guardado Como Favorito", Toast.LENGTH_SHORT).show()
-}
+
+
+
+        binding.guardarFav.setOnClickListener {
+            Toast.makeText(context, "Guardado Como Favorito", Toast.LENGTH_SHORT).show()
+        }
 
         binding.volver.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
@@ -95,11 +98,25 @@ binding.guardarFav.setOnClickListener{
         _binding = null
     }
 
-    fun bindContact (contactem: ContactsReponseItem, id :String ){
-        binding.titleEd.text = contactem.firstName
+    //metodo para conectar Contact con Feeds , el metodo recibe un listado de ContactItem
+    fun bindContact(contactem: List<ContactsReponseItem>) {
+        //valida la iguald del id obtenido en el firstfragment para luego comparar con el objeto contactItem
+
+        contactem.map {
+            //condicion si el id capturado en el primer fragmento es igual al id de el objeto del
+            // listado contactitem se obtiene un solo elemento y setea el valor los campos fisrtName textView ,gender
+            Log.i("info","$it")
+            if (idAuthor == it.id.toString()) {
+                binding.firstName.text = it.firstName
+                binding.gender.text = it.gender
+              binding.lastName.text=  it.lastName
 
 
+            }
+        }
 
     }
 
+
 }
+
